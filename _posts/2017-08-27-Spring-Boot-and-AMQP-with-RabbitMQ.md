@@ -5,7 +5,7 @@ author: "João Silva"
 categories: technology
 tags: [technology]
 image:
-  feature: mailboxes
+  feature: mailboxes.jpg
 ---
 
 Add something
