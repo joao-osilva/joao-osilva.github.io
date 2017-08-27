@@ -2,8 +2,8 @@
 layout: post
 title: "Math and Code Formatting"
 author: "Paul Le"
-categories: sample
-tags: [sample]
+categories: technology
+tags: [technology]
 image:
   feature: nature-1.jpg
 ---
