@@ -1,5 +1,5 @@
 title:  "Through a glass, darkly"
-tagline: "meaningless stuff"
+tagline: "Thoughts unsaid, then forgotten"
 description:
 author:
   name: "João Silva"
@@ -10,13 +10,13 @@ disqus:
   disqus_shortname: 'millennial-3'
 
 menu:
-- {name: 'Technology', file: 'technology.html'}
+- {name: 'Tech', file: 'technology.html'}
 - {name: 'About', file: 'about.html'}
 - {name: 'Contact', file: 'contact.html'}
 
 social:
 - {icon: 'github', link: 'https://github.com/joao-osilva'}
-- {icon: 'linkedin', link: 'https://br.linkedin.com/in/vitor191291'}
+- {icon: 'linkedin', link: 'https://www.linkedin.com/in/joao-osilva/'}
 - {icon: 'envelope', link: 'mailto:vitor191291@gmail.com'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
