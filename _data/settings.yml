@@ -7,7 +7,7 @@ author:
 # Change to true for Disqus comments
 disqus:
   comments: true
-  disqus_shortname: 'millennial-3'
+  disqus_shortname: 'throughaglass'
 
 menu:
 - {name: 'Tech', file: 'technology.html'}
