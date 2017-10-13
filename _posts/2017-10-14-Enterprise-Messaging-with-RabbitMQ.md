@@ -1,11 +1,9 @@
 ---
 layout: post
-title: "Spring Boot and AMQP with RabbitMQ"
+title: "Enterprise Messaging with RabbitMQ"
 author: "João Silva"
 categories: technology
 tags: [technology]
 image:
-  feature: mailboxes.jpg
+  feature: postoffice.jpg
 ---
-
-Add something
