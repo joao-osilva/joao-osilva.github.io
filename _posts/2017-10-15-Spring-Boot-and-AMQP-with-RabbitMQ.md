@@ -6,6 +6,7 @@ categories: technology
 tags: [technology]
 image:
   feature: mailboxes.jpg
+published: false
 ---
 
 Integration between systems it's probably one of the most critical subjects in a enterprise environment. In a scenario where you have so many different components interacting, it's very easy to put yourself in a situation where you end up in a [Tower of Babel](https://en.wikipedia.org/wiki/Tower_of_Babel), with each system communicating in a different "language".
