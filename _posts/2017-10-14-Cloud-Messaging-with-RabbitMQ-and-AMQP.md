@@ -22,7 +22,7 @@ In a scenario like this, some key factors must be considered before deciding how
 **Maintainability:** how hard is to maintain the integrated systems?
 
 **Extensibility:** how easy is to integrate new systems?
-
+&nbsp;&nbsp;
 ## Enterprise message system
 <img src="/assets/img/enterprise-message-2.png" width="350">
 
@@ -32,15 +32,11 @@ In an EMS(or Message-oriented Middleware) a message is a first-class citizen, or
 
 **Body:** has the actual data, represented in a specific format.
 
-The message system provides:
-
-- Mechanisms to validate, store, route and transform messages
-
-- Each system creates a message based on the protocol defined by the broker
-
-- Clustering capabilities
-
-- Implements different types of communication protocols
+- The message system provides:
+  - Mechanisms to validate, store, route and transform messages
+  - Each system creates a message based on the protocol defined by the broker
+  - Clustering capabilities
+  - Implements different types of communication protocols
 
 Some of the communication patterns used with it are:
 
@@ -49,7 +45,7 @@ Some of the communication patterns used with it are:
 **Publish-Subscribe:** One sender and multiple receivers(subscribers). The sender does not await for a response once the message is sent to the broker.
 
 **Request-Reponse:** One sender and one receiver, that sends a response to the sender of the message.
-
+&nbsp;&nbsp;
 ## Advanced Messaging Queueing Protocol(AMQP)
 AMQP comes from the financial sector and it was conceived as a co-operative effort, started in 2003 by JPMorgan Chase.
 
@@ -57,16 +53,12 @@ The great advantage behind AMQP, is that it is a wire-level protocol, meaning th
 
 So any tool that create/interpret messages that conform with this data format, can interoperate regardless of its implementation language.
 
-The AMQP 0.9.1 model consists in:
+#### The AMQP 0.9.1 model
 <img src="/assets/img/amqp-model.png" width="500">
-&nbsp;&nbsp;
-- Messages that are published to exchanges
-
-&nbsp;&nbsp;
-- These exchanges distribute the messages to queues based on a binding(rule)
-
-&nbsp;&nbsp;
-- The consumers then fetch/pull messages from these queues
+- The workflow consists in:
+  - Messages that are published to exchanges
+  - These exchanges distribute the messages to queues based on a binding(rule)
+  - The consumers then fetch/pull messages from these queues
 
 Some of the model entities are:
 
