@@ -34,12 +34,11 @@ My main focus here is the implementation itself, so I'm assuming that you are al
 
 ## Create a Spring Boot project
 
-   * Go to http://start.spring.io and create a simple Java/Maven project with AMQP and DevTools as dependencies.
-   * Download it and open in a IDE of your preference.
+Go to http://start.spring.io and create a simple Java/Maven project with AMQP and DevTools as dependencies.
 
 ## Configure RabbitMQ properties
 
-   * Go to ```src/main/resources/application.properties``` and add:
+Go to ```src/main/resources/application.properties``` and add:
 ```
 spring.rabbitmq.host=localhost
 spring.rabbitmq.port=5672
