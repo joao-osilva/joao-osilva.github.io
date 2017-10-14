@@ -17,6 +17,10 @@ In a recent project I had a scenario where the communication was implemented in 
 
 In this post I will demonstrate how you can implement an adapter that can produce or consume messages from a message broker(RabbitMQ) using AMQP.
 
+## Before we start
+
+My main focus here is the implementation itself, so I'm assuming that you are already familiar with RabbitMQ and AMQP. If you are not sure whether your knowledge is sufficient, check out my other post where I talk about [Cloud Messaging with RabbitMQ and AMQP"]({{ site.baseurl }}{% post_url 2017-10-14-Cloud-Messaging-with-RabbitMQ-and-AMQP %})
+
 ## Technical Stack
 
 I was in a context where the vast majority of the applications were written in Java, so I decided to choose:
@@ -28,10 +32,6 @@ I was in a context where the vast majority of the applications were written in J
 **RabbitMQ:** An open source message broker that implements the AMQP 0-9-1 protocol. It is written in Erlang and supports multiple protocols, programming languages, clustering, high availability, reliable delivery and so on.
 
 **Docker:** So we can have a RabbitMQ instance locally for tests, as well as an image for our application.
-
-## Before we start
-
-My main focus here is the implementation itself, so I'm assuming that you are already familiar with RabbitMQ and AMQP. If you are not sure whether your knowledge is sufficient, check out my other post where I talk about [Cloud Messaging with RabbitMQ]({{ site.baseurl }}{% post_url 2017-10-14-Cloud-Messaging-with-RabbitMQ %})
 
 ## Create a Spring Boot project
 
