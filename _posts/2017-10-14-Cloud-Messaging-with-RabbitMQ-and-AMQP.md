@@ -76,7 +76,7 @@ Some of its entities are:
 
 The model also provide 4 types of exchanges:
 
-<img src="/assets/img/default-exchange.png" width="240"><img src="/assets/img/direct-exchange.png" width="240">
+<img src="/assets/img/default-exchange.png" width="235"><img src="/assets/img/direct-exchange.png" width="235">
 
 **Direct exchange:** A one-to-one relationship with a queue through its binding. There is default exchange(that is a direct exchange) that uses a queue's name as a routing key for its binding.
 
@@ -91,3 +91,5 @@ The model also provide 4 types of exchanges:
 <img src="/assets/img/headers-exchange.png" width="300">
 
 **Headers exchange:** It will route the message based on the message header attributes. You need to indicate whether you want the headers to match exactly by adding x-match:all(header:key), or match any by adding x-match:any (header:any).
+
+## RabbitMQ
