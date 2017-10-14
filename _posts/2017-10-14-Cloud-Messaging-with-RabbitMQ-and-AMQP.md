@@ -22,8 +22,7 @@ In a scenario like this, some key factors must be considered before deciding how
 **Maintainability:** how hard is to maintain the integrated systems?
 
 **Extensibility:** how easy is to integrate new systems?
-&nbsp;
-&nbsp;
+
 ## Enterprise message system
 <img src="/assets/img/enterprise-message-2.png" width="350">
 
@@ -50,8 +49,7 @@ Some of the communication patterns used with it are:
 **Publish-Subscribe:** One sender and multiple receivers(subscribers). The sender does not await for a response once the message is sent to the broker.
 
 **Request-Reponse:** One sender and one receiver, that sends a response to the sender of the message.
-&nbsp;
-&nbsp;
+
 ## Advanced Messaging Queueing Protocol(AMQP)
 AMQP comes from the financial sector and it was conceived as a co-operative effort, started in 2003 by JPMorgan Chase.
 
@@ -68,10 +66,24 @@ The AMQP 0.9.1 model consists in:
 
 &nbsp;&nbsp;3. The consumers then fetch/pull messages from these queues
 
-Some of the model entities are:
+Some of its entities are:
 
 **Exchanges:** Entities where the producer sends messages. The exchanges will use bindings to route the message to the correct queue.
 
 **Bindings:** Each binding is a rule that specifies how the exchanges should route messages to queues.
 
 **Queues:** Store the messages(in memory or on disk) coming from one or more exchanges until they are consumed by applications.
+
+The model also provide 4 types of exchanges:
+
+<img src="/assets/img/default-exchange.png" width="300">
+<img src="/assets/img/direct-exchange.png" width="300">
+
+**Direct exchange:** A one-to-one relationship with a queue through its binding. There is default exchange(that is a direct exchange) that uses a queue's name as a routing key for its binding.
+
+**Fanout exchange:** delivers a message to all the queues that are bound to the exchange, it can be used to establish a broadcast mechanism for the delivery of messages to the queues
+    * There is a pre-created fanout exchange(amq.fanout)
+* Topic exchange: delivers the message to queues based on a routing filter specified between the topic exchange and queues. It can be used to establish a multicast mechanism for the delivery of messages
+    * There is a pre-created topic exchange(amq.topic)
+* Headers exchange: can be used to deliver messages to queues based on other message header attributes(and not the routing key)
+    * There a two pre-created header exchanges(amq.headers, amq.match)
