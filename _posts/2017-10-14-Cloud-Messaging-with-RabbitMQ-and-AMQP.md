@@ -76,14 +76,18 @@ Some of its entities are:
 
 The model also provide 4 types of exchanges:
 
-<img src="/assets/img/default-exchange.png" width="300">
-<img src="/assets/img/direct-exchange.png" width="300">
+<img src="/assets/img/default-exchange.png" width="240"><img src="/assets/img/direct-exchange.png" width="240">
 
 **Direct exchange:** A one-to-one relationship with a queue through its binding. There is default exchange(that is a direct exchange) that uses a queue's name as a routing key for its binding.
 
-**Fanout exchange:** delivers a message to all the queues that are bound to the exchange, it can be used to establish a broadcast mechanism for the delivery of messages to the queues
-    * There is a pre-created fanout exchange(amq.fanout)
-* Topic exchange: delivers the message to queues based on a routing filter specified between the topic exchange and queues. It can be used to establish a multicast mechanism for the delivery of messages
-    * There is a pre-created topic exchange(amq.topic)
-* Headers exchange: can be used to deliver messages to queues based on other message header attributes(and not the routing key)
-    * There a two pre-created header exchanges(amq.headers, amq.match)
+<img src="/assets/img/fanout-exchange.png" width="300">
+
+**Fanout exchange:** Delivers a message to all the queues that are bound to the exchange. It can be used as broadcast mechanism, similar to the publish/subscribe pattern.
+
+<img src="/assets/img/topic-exchange.png" width="300">
+
+**Topic exchange:** Is similar to the direct exchange, the only difference is that it accepts wildcards(\*) for the routing keys
+
+<img src="/assets/img/headers-exchange.png" width="300">
+
+**Headers exchange:** It will route the message based on the message header attributes. You need to indicate whether you want the headers to match exactly by adding x-match:all(header:key), or match any by adding x-match:any (header:any).
