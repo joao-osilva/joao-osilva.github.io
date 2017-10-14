@@ -76,7 +76,9 @@ Some of its entities are:
 
 The model also provide 4 types of exchanges:
 
-<img src="/assets/img/default-exchange.png" width="225"><img src="/assets/img/direct-exchange.png" width="225">
+Default exchange | Direct exchange
+      ---        |      ---
+<img src="/assets/img/default-exchange.png" width="300"> |<img src="/assets/img/direct-exchange.png" width="300">
 
 **Direct exchange:** A one-to-one relationship with a queue through its binding. There is default exchange(that is a direct exchange) that uses a queue's name as a routing key for its binding.
 
