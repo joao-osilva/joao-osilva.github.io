@@ -34,9 +34,9 @@ In an EMS(or Message-oriented Middleware) a message is a first-class citizen, or
 
 - The message system provides:
     - Mechanisms to validate, store, route and transform messages
-  - Each system creates a message based on the protocol defined by the broker
-  - Clustering capabilities
-  - Implements different types of communication protocols
+    - Each system creates a message based on the protocol defined by the broker
+    - Clustering capabilities
+    - Implements different types of communication protocols
 
 Some of the communication patterns used with it are:
 
