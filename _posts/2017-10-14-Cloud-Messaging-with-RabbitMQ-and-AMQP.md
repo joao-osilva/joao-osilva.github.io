@@ -53,12 +53,14 @@ The great advantage behind AMQP, is that it is a wire-level protocol, meaning th
 
 So any tool that create/interpret messages that conform with this data format, can interoperate regardless of its implementation language.
 
-#### The AMQP 0.9.1 model
 <img src="/assets/img/amqp-model.png" width="500">
-- The workflow consists in:
-  - Messages that are published to exchanges
-  - These exchanges distribute the messages to queues based on a binding(rule)
-  - The consumers then fetch/pull messages from these queues
+The AMQP 0.9.1 model consists in:
+
+&nbsp;&nbsp;1. Messages that are published to exchanges
+
+&nbsp;&nbsp;2. These exchanges distribute the messages to queues based on a binding(rule)
+
+&nbsp;&nbsp;3. The consumers then fetch/pull messages from these queues
 
 Some of the model entities are:
 
