@@ -22,7 +22,8 @@ In a scenario like this, some key factors must be considered before deciding how
 **Maintainability:** how hard is to maintain the integrated systems?
 
 **Extensibility:** how easy is to integrate new systems?
-&nbsp;&nbsp;
+&nbsp;
+&nbsp;
 ## Enterprise message system
 <img src="/assets/img/enterprise-message-2.png" width="350">
 
@@ -49,7 +50,8 @@ Some of the communication patterns used with it are:
 **Publish-Subscribe:** One sender and multiple receivers(subscribers). The sender does not await for a response once the message is sent to the broker.
 
 **Request-Reponse:** One sender and one receiver, that sends a response to the sender of the message.
-&nbsp;&nbsp;
+&nbsp;
+&nbsp;
 ## Advanced Messaging Queueing Protocol(AMQP)
 AMQP comes from the financial sector and it was conceived as a co-operative effort, started in 2003 by JPMorgan Chase.
 
