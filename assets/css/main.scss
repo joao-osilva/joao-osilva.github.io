@@ -35,3 +35,20 @@ $header-thickness: 56px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 }
+
+.form-style input[type=submit]:hover,
+.form-style input[type=button]:hover{
+    background: #EAEAEA;
+    color: #000;
+}
+
+.form-style label{
+    display: block;
+    margin: 0px 0px 15px 0px;
+}
+.form-style label > span{
+    width: 100px;
+    float: left;
+    padding-top: 0px;
+    padding-right: 5px;
+}

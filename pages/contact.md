@@ -15,7 +15,9 @@ This theme is completely free and open source software. You may use it however y
     <textarea name="message" rows="5" cols="50" placeholder="Message" required></textarea>
     <input type="hidden" name="_subject" value="[throughaglass.io] new contact!" /><br><br>
     <input type="text" name="_gotcha" style="display:none" />
+<label>
     <input type="submit" value="Send">
+</label>
 </form>
 </div>
 <script>
