@@ -76,7 +76,7 @@ Some of its entities are:
 
 The model also provide 4 types of exchanges:
 
-Default exchange | Direct exchange
+|                            |  
       ---        |      ---
 <img src="/assets/img/default-exchange.png" width="300"> |<img src="/assets/img/direct-exchange.png" width="300">
 
