@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cloud Messaging with RabbitMQ and AMQP"
+title: "Enterprise Messaging with RabbitMQ and AMQP"
 author: "João Silva"
 categories: technology
 tags: [technology]

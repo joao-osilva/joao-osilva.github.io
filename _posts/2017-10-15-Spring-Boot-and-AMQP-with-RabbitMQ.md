@@ -19,7 +19,7 @@ In this post I will demonstrate how you can implement an adapter that can produc
 
 ## Before we start
 
-My main focus here is the implementation itself, so I'm assuming that you are already familiar with RabbitMQ and AMQP. If you are not sure whether your knowledge is sufficient, check out my other post where I talk about [Cloud Messaging with RabbitMQ and AMQP"]({{ site.baseurl }}{% post_url 2017-10-14-Cloud-Messaging-with-RabbitMQ-and-AMQP %})
+My main focus here is the implementation itself, so I'm assuming that you are already familiar with RabbitMQ and AMQP. If you are not sure whether your knowledge is sufficient, check out my other post where I talk about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %})
 
 ## Technical Stack
 
