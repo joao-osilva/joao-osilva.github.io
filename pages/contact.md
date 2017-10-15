@@ -8,12 +8,12 @@ This theme is completely free and open source software. You may use it however y
 <div class="form-style">
 <form id="contactform" method="POST">
     <label for="name">Your name</label><br>
-    <input type="text" name="name" placeholder="Name" required><br><br>
+    <input type="text" name="name" placeholder="Name" required><br>
     <label for="_replyto">Your email</label><br>
-    <input type="email" name="_replyto" placeholder="example@domain.com" required><br><br>
+    <input type="email" name="_replyto" placeholder="example@domain.com" required><br>
     <label for="message">Your message</label><br>
     <textarea name="message" rows="5" cols="50" placeholder="Message" required></textarea>
-    <input type="hidden" name="_subject" value="[throughaglass.io] new contact!" /><br><br>
+    <input type="hidden" name="_subject" value="[throughaglass.io] new contact!" /><br>
     <input type="text" name="_gotcha" style="display:none" />
 <label>
     <input type="submit" value="Send">
