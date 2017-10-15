@@ -112,3 +112,5 @@ Some of its features are:
 **High availability:** ensures that if a broker fails, communication will be redirected to a different broker instance.
 
 **Pluggable architecture:** provides a mechanism to extend its functionalities with RabbitMQ plug-ins
+
+That's it for today, I'll do another post in the future showing how to set up RabbitMQ on docker.
