@@ -9,11 +9,11 @@ If you have any questions or suggestions, feel free to send me a message using t
 
 <div class="form-style">
 <form id="contactform" method="POST">
-    <label for="name">Your name</label><br>
+    <label for="name">Your name</label>
     <input type="text" name="name" placeholder="Name" required><br>
-    <label for="_replyto">Your email</label><br>
+    <label for="_replyto">Your email</label>
     <input type="email" name="_replyto" placeholder="example@domain.com" required><br>
-    <label for="message">Your message</label><br>
+    <label for="message">Your message</label>
     <textarea name="message" rows="5" cols="50" placeholder="Message" required></textarea>
     <input type="hidden" name="_subject" value="[throughaglass.io] new contact!" /><br>
     <input type="text" name="_gotcha" style="display:none" />
