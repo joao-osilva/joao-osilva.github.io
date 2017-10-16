@@ -3,7 +3,7 @@ layout: misc
 title: Contact
 ---
 
-You can find me at [Linkedin](https://linkedin.com/in/joao-osilva), [GitHub](https://github.com/joao-osilva) and [Email](mailto:vitor191291@gmail.com).
+You can find me at [Linkedin](https://linkedin.com/in/joao-osilva), [GitHub](https://github.com/joao-osilva) or [Email](mailto:vitor191291@gmail.com).
 
 If you have any questions or suggestions, feel free to send me a message using the form below.
 

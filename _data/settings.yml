@@ -1,5 +1,5 @@
 title:  "Through a glass, darkly"
-tagline: "Thoughts unsaid, then forgotten"
+tagline:
 description:
 author:
   name: "João Silva"
@@ -10,7 +10,7 @@ disqus:
   disqus_shortname: 'throughaglass'
 
 menu:
-- {name: 'Tech', file: 'technology.html'}
+- {name: 'Technology', file: 'technology.html'}
 - {name: 'About', file: 'about.html'}
 - {name: 'Contact', file: 'contact.html'}
 
