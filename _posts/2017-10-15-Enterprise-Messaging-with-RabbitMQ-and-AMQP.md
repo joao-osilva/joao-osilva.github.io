@@ -24,7 +24,9 @@ In a scenario like this, some key factors must be considered before deciding how
 **Extensibility:** how easy is to integrate new systems?
 
 ## Enterprise message system to the rescue
-<img src="/assets/img/enterprise-message-2.png" width="350">
+<div class="all-img">
+<img src="/assets/img/enterprise-message-2.png">
+</div>
 
 In an Enterprise message system(or Message-oriented Middleware) a message is a first-class citizen, or the central unit of communication if you will. It consists in:
 
@@ -58,7 +60,9 @@ The great advantage behind AMQP, is that it is a wire-level protocol, meaning th
 So any tool that create/interpret messages that conform with this data format, can interoperate regardless of its implementation language.
 
 The AMQP 0.9.1 model consists in:
-<img src="/assets/img/amqp-model.png" width="500">
+<div class="all-img">
+<img src="/assets/img/amqp-model.png">
+</div>
 
 &nbsp;&nbsp;1. Messages that are published to exchanges
 
@@ -80,19 +84,25 @@ The model also provide 4 types of exchanges:
 
 |                            |  
       ---        |      ---
-<img src="/assets/img/default-exchange.png" width="300"> |<img src="/assets/img/direct-exchange.png" width="300">
+<div class="all-img"><img src="/assets/img/default-exchange.png"></div> |<div class="all-img"><img src="/assets/img/direct-exchange.png"></div>
 
 **Fanout exchange:** Delivers a message to all the queues that are bound to the exchange. It can be used as broadcast mechanism, similar to the publish/subscribe pattern.
 
-<img src="/assets/img/fanout-exchange.png" width="300">
+<div class="all-img">
+<img src="/assets/img/fanout-exchange.png">
+</div>
 
 **Topic exchange:** Is similar to the direct exchange, the only difference is that it accepts wildcards(\*) for the routing keys.
 
-<img src="/assets/img/topic-exchange.png" width="300">
+<div class="all-img">
+<img src="/assets/img/topic-exchange.png">
+</div>
 
 **Headers exchange:** It will route the message based on the message header attributes. You need to indicate whether you want the headers to match exactly by adding x-match:all(header:key), or match any by adding x-match:any (header:any).
 
-<img src="/assets/img/headers-exchange.png" width="300">
+<div class="all-img">
+<img src="/assets/img/headers-exchange.png">
+</div>
 
 ## RabbitMQ
 Is an Erlang implementation of a message broker, basically. It has all the Erlang's native support for building highly-reliable and distributed applications, and it can run on any OS. It implements version 0-9-1 of AMQP with some extensions.

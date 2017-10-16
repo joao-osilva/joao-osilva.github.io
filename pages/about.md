@@ -2,7 +2,7 @@
 layout: misc
 title: About
 ---
-<div class="about-img">
+<div class="all-img">
 <img src="/assets/img/through-a-glass-darkly.jpg">
 </div>
 [image: [David Mello](https://www.flickr.com/photos/mellodave/11259514936/)]
