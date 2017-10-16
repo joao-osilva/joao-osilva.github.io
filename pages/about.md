@@ -5,7 +5,6 @@ title: About
 <div class="about-img">
 <img src="/assets/img/through-a-glass-darkly.jpg">
 </div>
-[image: [David Mello](https://www.flickr.com/photos/mellodave/11259514936/)]
 
 The name given to the blog comes from a passage in the bible, that states:
 > For now we see through a glass darkly.
@@ -21,3 +20,5 @@ Seeing the reality clearly and unbiased it's almost like being omniscient. We ke
 I think that this probably resembles me a lot of my "profession", having to deal with the uncertainty of things, while surrounded by people that seem so sure of their opinions.
 
 Well, that's it. I'll try to post every now and then some interesting(or not) stuff about technology or anything else.
+
+[image: [David Mello](https://www.flickr.com/photos/mellodave/11259514936/)]
