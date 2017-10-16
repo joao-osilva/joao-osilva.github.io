@@ -18,4 +18,4 @@ Seeing the reality clearly and unbiased it's almost like being omniscient. We ke
 
 I think that this probably resembles me a lot of my "profession", having to deal with the uncertainty of things, while surrounded by people that seem so sure of their opinions.
 
-Well that's it. I'll try to post every now and then some interesting(or not) stuff about technology or anything else.
+Well, that's it. I'll try to post every now and then some interesting(or not) stuff about technology or anything else.
