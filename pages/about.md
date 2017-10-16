@@ -3,6 +3,7 @@ layout: misc
 title: About
 ---
 <img src="/assets/img/through-a-glass-darkly.jpg" width="600">
+[image:[David Mello](https://www.flickr.com/photos/mellodave/11259514936/)]
 
 The name given to the blog comes from a passage in the bible, that states:
 > For now we see through a glass darkly.
