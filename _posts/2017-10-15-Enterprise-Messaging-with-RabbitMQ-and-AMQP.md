@@ -82,9 +82,8 @@ The model also provide 4 types of exchanges:
 
 **Direct exchange:** A one-to-one relationship with a queue through its binding. There is default exchange(that is a direct exchange) that uses a queue's name as a routing key for its binding.
 
-|                            |  
-      ---        |      ---
-<div class="all-img"><img src="/assets/img/default-exchange.png"></div> |<div class="all-img"><img src="/assets/img/direct-exchange.png"></div>
+<div class="all-img"><img src="/assets/img/default-exchange.png">
+<img src="/assets/img/direct-exchange.png"></div>
 
 **Fanout exchange:** Delivers a message to all the queues that are bound to the exchange. It can be used as broadcast mechanism, similar to the publish/subscribe pattern.
 
