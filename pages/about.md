@@ -5,9 +5,9 @@ title: About
 <img src="/assets/img/through-a-glass-darkly.jpg" width="600">
 
 The name given to the blog comes from a passage in the bible, that states:
-> For now we see through a glass darkly
+> For now we see through a glass darkly.
 >
->> &mdash; <cite>1 Corinthians 13:12</cite>
+> &mdash; <cite>1 Corinthians 13:12</cite>
 
 Surprisingly this appeared to me first in a movie(watched years ago), made by the Swedish director [Ingmar Bergman](https://en.wikipedia.org/wiki/Ingmar_Bergman), called [Through a Glass Darkly](https://en.wikipedia.org/wiki/Through_a_Glass_Darkly_(film)). The film is a masterpiece on its own, and a must-see for any cinephile(like myself).
 
