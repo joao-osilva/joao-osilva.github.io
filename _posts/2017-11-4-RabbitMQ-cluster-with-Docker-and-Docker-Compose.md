@@ -95,12 +95,19 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 
 ### listen haproxy-stats
 **bind:** listening address:port
+
 **mode:** which protocol is being used
+
 **stats enable:** enable statistics reporting
+
 **stats hide-version:** hide HAProxy version reporting
+
 **stats refresh:** statistics refresh rate
+
 **stats uri:** the URI prefix to access the statistics page
+
 **stats realm:** statistics authentication realm
+
 **stats auth:** enable statistics basic authentication and grant access to an account(user:pass)
 
 ### listen rabbitmq
