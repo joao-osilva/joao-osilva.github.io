@@ -109,7 +109,7 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _stats realm_     | statistics authentication realm |
 | _stats auth_     | enable statistics basic authentication and grant access to an account(user:pass) |
 
-**_listen rabbitmq_**
+**__listen rabbitmq__**
 | Variable    | Description           |
 | :----------|:-------------|
 | _bind_     | listening address:port |
