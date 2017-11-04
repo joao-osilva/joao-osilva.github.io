@@ -6,7 +6,7 @@ categories: technology
 tags: [technology, rabbitmq, docker, docker-compose, haproxy]
 image:
   feature: container.jpeg
-published: false
+published: true
 ---
 Following my previous post about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %}), let's get a cluster up running using Docker and Docker Compose.
 
@@ -76,72 +76,47 @@ listen rabbitmq
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
 ### __global__
-
-| Tables        | Are           |
-| ------------- |:-------------:|
-| _log_      | right-aligned |
-| _chroot_      | centered      |
-| zebra stripes | are neat      |
-
-**log:** indicates where to send the logs, its facility and level
-**chroot:** isolates the app(in a directory) from the rest of the system to increase the security level([more about](https://help.ubuntu.com/community/BasicChroot))
-
-**maxconn:** maximum number of concurrent connections
-
-**daemon:** makes the process run in the background
-
-**user:** name of the user dedicated to HAProxy in the OS
-
-**group:** name of the group that the user belongs to
+| Variable    | Description           |
+| :----------|:-------------|
+| _log_     | indicates where to send the logs, its facility and level |
+| _chroot_  | isolates the app(in a directory) from the rest of the system to increase the security level([more about](https://help.ubuntu.com/community/BasicChroot))      |
+| _maxconn_ | maximum number of concurrent connections      |
+| _daemon_  | makes the process run in the background      |
+| _user_    | name of the user dedicated to HAProxy in the OS      |
+| _group_   | name of the group that the user belongs to      |
 
 ### __defaults__
-
-**log:** apply log settings from the global section
-
-**option dontlognull:** disable logging of null connections
-
-**option persist:** forward requests firstly to servers that are allegedly down
-
-**option redispatch:** in case the server its really dead, redirect the request to another one
-
-**retries:** number of retries to perform on a server after connection failure
-
-**timeout connect:** maximum time to wait for a connection attempt to a server to succeed
-
-**timeout client:** maximum inactivity time on the client side
-
-**timeout server:** maximum inactivity time on the server side
+| Variable    | Description           |
+| :----------|:-------------|
+| _log_     | apply log settings from the global section |
+| _option dontlognull_  | disable logging of null connections      |
+| _option persist_ | forward requests firstly to servers that are allegedly down      |
+| _option redispatch_  | in case the server its really dead, redirect the request to another one      |
+| _retries_    | number of retries to perform on a server after connection failure      |
+| _timeout connect_   | maximum time to wait for a connection attempt to a server to succeed      |
+| _timeout client_   | maximum inactivity time on the client side      |
+| _timeout server_   | maximum inactivity time on the server side      |
 
 ### __listen haproxy-stats__
-
-**bind:** listening address:port
-
-**mode:** which protocol is being used
-
-**stats enable:** enable statistics reporting
-
-**stats hide-version:** hide HAProxy version reporting
-
-**stats refresh:** statistics refresh rate
-
-**stats uri:** the URI prefix to access the statistics page
-
-**stats realm:** statistics authentication realm
-
-**stats auth:** enable statistics basic authentication and grant access to an account(user:pass)
+| Variable    | Description           |
+| :----------|:-------------|
+| _bind_     | listening address:port |
+| _mode_     | which protocol is being used |
+| _stats enable_     | enable statistics reporting |
+| _stats hide-version_     | hide HAProxy version reporting |
+| _stats refresh_     | statistics refresh rate |
+| _stats uri_     | the URI prefix to access the statistics page |
+| _stats realm_     | statistics authentication realm |
+| _stats auth_     | enable statistics basic authentication and grant access to an account(user:pass) |
 
 ### listen rabbitmq
-
-**bind:** listening address:port
-
-**mode:** which protocol is being used
-
-**option tcplog:** advanced logging of TCP connections with session state and timers
-
-**balance roundrobin:** load balancing algorithm used
-
-**server rabbitmq-node-x rabbitmq-node-x:5672 check inter
-5000 rise 3 fall 5:** declares a rabbitmq server with hostname "rabbitmq-node-x" that listen at port "5672", with a health check interval of 5000ms. This server can be considered operational after 3 consecutive successful health checks(rise), and it can only be considered dead after 5 consecutive unsuccessful health checks(fall).
+| Variable    | Description           |
+| :----------|:-------------|
+| _bind_     | listening address:port |
+| _mode_     | which protocol is being used |
+| _option tcplog_     | advanced logging of TCP connections with session state and timers |
+| _balance roundrobin_     | used load balancing algorithm |
+| _server_  | declares a rabbitmq server with hostname "rabbitmq-node-x" that listen at port "5672", with a health check interval of 5000ms. This server can be considered operational after 3 consecutive successful health checks(rise), and it can only be considered dead after 5 consecutive unsuccessful health checks(fall) |
 
 You can find more information about HAproxy configuration [here](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html).
 
