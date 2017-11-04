@@ -6,7 +6,7 @@ categories: technology
 tags: [technology, rabbitmq, docker, docker-compose, haproxy]
 image:
   feature: container.jpeg
-published: true
+published: false
 ---
 Following my previous post about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %}), let's get a cluster up running using Docker and Docker Compose.
 
@@ -76,6 +76,12 @@ listen rabbitmq
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
 ### __global__
+
+| Tables        | Are           |
+| ------------- |:-------------:|
+| _log_      | right-aligned |
+| _chroot_      | centered      |
+| zebra stripes | are neat      |
 
 **log:** indicates where to send the logs, its facility and level
 **chroot:** isolates the app(in a directory) from the rest of the system to increase the security level([more about](https://help.ubuntu.com/community/BasicChroot))
