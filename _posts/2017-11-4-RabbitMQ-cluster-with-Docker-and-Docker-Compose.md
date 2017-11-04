@@ -76,8 +76,8 @@ listen rabbitmq
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
 ### _global_
-<br>
 
+<br>
 | Variable    | Description |
 | :----------|:-------------|
 | _log_     | indicates where to send the logs, its facility and level |
