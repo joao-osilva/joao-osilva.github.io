@@ -75,7 +75,8 @@ listen rabbitmq
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
-<table style="width:100%; border-color:red;">
+<div class="table-content">
+<table>
   <tr>
     <th>Firstname</th>
     <th>Lastname</th>
@@ -89,6 +90,7 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
     <td>Jackson</td>
   </tr>
 </table>
+</div>
 
 ### _global_
 
