@@ -74,6 +74,7 @@ listen rabbitmq
     server  rabbitmq-node-3 rabbitmq-node-3:5672 check inter 5000 rise 3 fall 5
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
+
 #### global
 - **log:** indicates where to send the logs, its facility and level
 - **chroot:** isolates the app(in a directory) from the rest of the system to increase the security level([more about](https://help.ubuntu.com/community/BasicChroot))
