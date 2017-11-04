@@ -75,13 +75,20 @@ listen rabbitmq
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
-|     |            |
-| ----------|-------------|
-| **_bind_**     | listening address:port |
-
-| Type      | Host     | Points To | TTL      |
-|:---------:|:--------:|:---------:|:--------:|
-| `CNAME`   | `test`   | `[user].github.io`   | `1 hour` |
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+  </tr>
+</table>
 
 ### _global_
 
