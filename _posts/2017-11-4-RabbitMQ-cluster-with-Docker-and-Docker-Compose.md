@@ -76,8 +76,7 @@ listen rabbitmq
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
 ### _global_
-
-
+<br>
 | Variable    | Description |
 | :----------|:-------------|
 | _log_     | indicates where to send the logs, its facility and level |
@@ -86,11 +85,9 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _daemon_  | makes the process run in the background      |
 | _user_    | name of the user dedicated to HAProxy in the OS      |
 | _group_   | name of the group that the user belongs to      |
-
-
+<br>
 ### _defaults_
-
-
+<br>
 | Variable    | Description           |
 | :----------|:-------------|
 | _log_     | apply log settings from the global section |
@@ -101,9 +98,9 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _timeout connect_   | maximum time to wait for a connection attempt to a server to succeed      |
 | _timeout client_   | maximum inactivity time on the client side      |
 | _timeout server_   | maximum inactivity time on the server side      |
-
+<br>
 ### _listen haproxy-stats_
-
+<br>
 | Variable    | Description           |
 | :----------|:-------------|
 | _bind_     | listening address:port |
@@ -114,9 +111,9 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _stats uri_     | the URI prefix to access the statistics page |
 | _stats realm_     | statistics authentication realm |
 | _stats auth_     | enable statistics basic authentication and grant access to an account(user:pass) |
-
+<br>
 ### _listen rabbitmq_
-
+<br>
 | Variable    | Description           |
 | :----------|:-------------|
 | _bind_     | listening address:port |
