@@ -20,6 +20,12 @@ $phone-width: 480px;
 
 $header-thickness: 56px;
 
+$theme-color: $blue;
+$font-sans: "PT Sans", Helvetica, Arial, sans-serif;
+$font-font-awesome: FontAwesome;
+$white: #fff;
+$post-date-color: #9a9a9a;
+
 @import "_sass/-sections-dir";
 
 .form-style input[type=submit],
