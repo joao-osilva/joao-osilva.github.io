@@ -20,4 +20,6 @@ social:
 - {icon: 'linkedin', link: 'https://www.linkedin.com/in/joao-osilva/'}
 - {icon: 'envelope', link: 'mailto:vitor191291@gmail.com'}
 
-# Available social icons are powered by Font Awesome, so you can use any icon that they offer
+tag_page: '/pages/'
+
+google-ID: 'UA-109202128-1'

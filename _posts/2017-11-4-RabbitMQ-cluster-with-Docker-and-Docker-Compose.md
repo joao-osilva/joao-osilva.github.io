@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Running a RabbitMQ cluster with Docker and Docker Compose"
+title: "RabbitMQ cluster with Docker and Docker Compose"
 author: "João Silva"
 categories: technology
 tags: [technology, rabbitmq, docker, docker-compose, haproxy]
 image:
   feature: container.jpeg
-published: true
+published: false
 ---
 
 Following my previous post about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %}), let's get a cluster running using Docker and Docker Compose.
@@ -36,7 +36,7 @@ As I mentioned early, I'm using a reverse proxy to balance the load on my cluste
 Fist we need to create a configuration file with all the necessary information for HAProxy.
 
 Create a file named `haproxy.cfg`, and copy the following content on it:
-```ini
+```cfg
 global
   log     127.0.0.1 alert
   log     127.0.0.1 alert debug
