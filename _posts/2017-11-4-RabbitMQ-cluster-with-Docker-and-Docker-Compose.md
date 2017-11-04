@@ -86,7 +86,6 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _user_    | name of the user dedicated to HAProxy in the OS      |
 | _group_   | name of the group that the user belongs to      |
 
-<br>
 ### _defaults_
 
 | Variable    | Description           |
@@ -100,7 +99,6 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _timeout client_   | maximum inactivity time on the client side      |
 | _timeout server_   | maximum inactivity time on the server side      |
 
-<br>
 ### _listen haproxy-stats_
 
 | Variable    | Description           |
@@ -114,7 +112,6 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | _stats realm_     | statistics authentication realm |
 | _stats auth_     | enable statistics basic authentication and grant access to an account(user:pass) |
 
-<br>
 ### _listen rabbitmq_
 
 | Variable    | Description           |
