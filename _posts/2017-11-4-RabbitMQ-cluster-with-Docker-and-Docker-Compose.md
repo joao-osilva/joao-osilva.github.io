@@ -75,13 +75,8 @@ listen rabbitmq
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
-asdasd
-* asdasd
-* asd
-
-
-
 ### _global_
+
 
 | Variable    | Description |
 | :----------|:-------------|
@@ -92,7 +87,9 @@ asdasd
 | _user_    | name of the user dedicated to HAProxy in the OS      |
 | _group_   | name of the group that the user belongs to      |
 
+
 ### _defaults_
+
 
 | Variable    | Description           |
 | :----------|:-------------|
