@@ -79,6 +79,10 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 | ----------|-------------|
 | _bind_     | listening address:port |
 
+| Type      | Host     | Points To | TTL      |
+|:---------:|:--------:|:---------:|:--------:|
+| `CNAME`   | `test`   | `[user].github.io`   | `1 hour` |
+
 ### _global_
 
 | Variable    | Description           |
