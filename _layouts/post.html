@@ -25,7 +25,7 @@ layout: default
     {% endif %}
     {% if page.tags %} |
       {% for tag in page.tags %}
-        <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+        <a href="{{ site.baseurl }}{{ site.data.settings.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
       {% endfor %}
     {% endif %}
   </span>
@@ -62,7 +62,7 @@ layout: default
               <h3>
                 <a href="{{ site.github.url }}{{ mypost.url }}">
                   <div class="related-thumbnail">
-                    <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{ mypost.image.feature }}" style="max-width: 100%; height: auto;">
+                    <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{ mypost.image.feature }}" style="max-width: 100%; max-height: 100%; height: auto; width:auto;">
                   </div>
                   <div class="related-title">
                     {{ mypost.title }}
