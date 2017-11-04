@@ -23,8 +23,3 @@ social:
 tag_page: '/pages/tags.html'
 
 google-ID: 'UA-109202128-1'
-
-markdown:            kramdown
-highlighter:         rouge
-permalink:           none
-plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed]
