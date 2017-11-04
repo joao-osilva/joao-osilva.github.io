@@ -75,25 +75,38 @@ listen rabbitmq
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
-### global
+### __global__
+
 **log:** indicates where to send the logs, its facility and level
 **chroot:** isolates the app(in a directory) from the rest of the system to increase the security level([more about](https://help.ubuntu.com/community/BasicChroot))
+
 **maxconn:** maximum number of concurrent connections
+
 **daemon:** makes the process run in the background
+
 **user:** name of the user dedicated to HAProxy in the OS
+
 **group:** name of the group that the user belongs to
 
-### defaults
+### __defaults__
+
 **log:** apply log settings from the global section
+
 **option dontlognull:** disable logging of null connections
+
 **option persist:** forward requests firstly to servers that are allegedly down
+
 **option redispatch:** in case the server its really dead, redirect the request to another one
+
 **retries:** number of retries to perform on a server after connection failure
+
 **timeout connect:** maximum time to wait for a connection attempt to a server to succeed
+
 **timeout client:** maximum inactivity time on the client side
+
 **timeout server:** maximum inactivity time on the server side
 
-### listen haproxy-stats
+### __listen haproxy-stats__
 
 **bind:** listening address:port
 
@@ -112,11 +125,17 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 **stats auth:** enable statistics basic authentication and grant access to an account(user:pass)
 
 ### listen rabbitmq
+
 **bind:** listening address:port
+
 **mode:** which protocol is being used
+
 **option tcplog:** advanced logging of TCP connections with session state and timers
+
 **balance roundrobin:** load balancing algorithm used
-**server rabbitmq-node-x rabbitmq-node-x:5672 check inter 5000 rise 3 fall 5:** declares a rabbitmq server with hostname "rabbitmq-node-x" that listen at port "5672", with a health check interval of 5000ms. This server can be considered operational after 3 consecutive successful health checks(rise), and it can only be considered dead after 5 consecutive unsuccessful health checks(fall).
+
+**server rabbitmq-node-x rabbitmq-node-x:5672 check inter
+5000 rise 3 fall 5:** declares a rabbitmq server with hostname "rabbitmq-node-x" that listen at port "5672", with a health check interval of 5000ms. This server can be considered operational after 3 consecutive successful health checks(rise), and it can only be considered dead after 5 consecutive unsuccessful health checks(fall).
 
 You can find more information about HAproxy configuration [here](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html).
 
