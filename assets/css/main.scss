@@ -67,10 +67,7 @@ $post-date-color: #9a9a9a;
     max-height: 100%;
 }
 
-.table-content table{
-  border-collapse: collapse;
-}
-
 .table-content table, th, td{
+  border-collapse: collapse;
   border: 1px solid black;
 }
