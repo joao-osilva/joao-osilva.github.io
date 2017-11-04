@@ -20,6 +20,6 @@ social:
 - {icon: 'linkedin', link: 'https://www.linkedin.com/in/joao-osilva/'}
 - {icon: 'envelope', link: 'mailto:vitor191291@gmail.com'}
 
-tag_page: '/pages/'
+tag_page: '/pages/tags.html'
 
 google-ID: 'UA-109202128-1'
