@@ -78,9 +78,9 @@
 	background-repeat: no-repeat;
   float: left;
   position: relative;
-  width: 600px;
-  height: 200px;
   overflow: hidden;
+  max-width: 100%;
+  height: auto;
 }
 .related-title {
   float: right;
