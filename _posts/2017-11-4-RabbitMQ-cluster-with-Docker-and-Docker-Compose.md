@@ -6,21 +6,19 @@ categories: technology
 tags: [technology, rabbitmq, docker, docker-compose, haproxy]
 image:
   feature: container.jpeg
-published: false
+published: true
 ---
-
-Following my previous post about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %}), let's get a cluster running using Docker and Docker Compose.
+Following my previous post about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %}), let's get a cluster up running using Docker and Docker Compose.
 
 ## Target Architecture
-
-The idea here is to create a RabbitMQ cluster composed by 3 nodes, and have a reverse proxy that sits in front of the cluster and distributes the load between nodes.
+The idea here is to create a RabbitMQ cluster composed by 3 nodes, having a reverse proxy sitting in front of the cluster distributing the load between the nodes.
 
 <div class="all-img">
 <img src="/assets/img/reverse-proxy.png">
 </div>
 
 ## RabbitMQ and Docker
-I'm going to use the official RabbitMQ docker image available at [Docker Hub](https://hub.docker.com/_/rabbitmq/), since it's shipped with the management plugin and it's really easy to configure.
+I'm going to use the official RabbitMQ docker image available at [Docker Hub](https://hub.docker.com/_/rabbitmq/), since it already has the management plugin and it's really easy to configure.
 
 In order to define and run our multi-container environment I'm goint to use [Docker Compose](https://docs.docker.com/compose/), which will help us to organize everything in one place.
 
@@ -31,9 +29,9 @@ To use Docker Compose you need 2 things:
 &nbsp;&nbsp;2. Define your services in a `docker-compose.yml` file.
 
 ## HAProxy
-As I mentioned early, I'm using a reverse proxy to balance the load on my cluster. There are many options in the market such as NGINX, Apache HTTP Server and HAProxy, which is what I'm using here, given it has support for HTTP and TCP as well.
+As I mentioned early, I'm using a reverse proxy to balance the load on my cluster. There are many options in the market such as NGINX, Apache HTTP Server and HAProxy, which is what I'm using here, given it has support for HTTP and TCP protocol as well.
 
-Fist we need to create a configuration file with all the necessary information for HAProxy.
+First we need to create a configuration file with all the necessary information for HAProxy.
 
 Create a file named `haproxy.cfg`, and copy the following content on it:
 ```cfg
@@ -76,14 +74,15 @@ listen rabbitmq
     server  rabbitmq-node-3 rabbitmq-node-3:5672 check inter 5000 rise 3 fall 5
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
-##### global
+#### global
+- **log:** indicates where to send the logs, its facility and level
 - **chroot:** isolates the app(in a directory) from the rest of the system to increase the security level([more about](https://help.ubuntu.com/community/BasicChroot))
 - **maxconn:** maximum number of concurrent connections
 - **daemon:** makes the process run in the background
 - **user:** name of the user dedicated to HAProxy in the OS
 - **group:** name of the group that the user belongs to
 
-##### defaults
+#### defaults
 - **log:** apply log settings from the global section
 - **option dontlognull:** disable logging of null connections
 - **option persist:** forward requests firstly to servers that are allegedly down
@@ -93,7 +92,7 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 - **timeout client:** maximum inactivity time on the client side
 - **timeout server:** maximum inactivity time on the server side
 
-##### listen haproxy-stats
+#### listen haproxy-stats
 - **bind:** listening address:port
 - **mode:** which protocol is being used
 - **stats enable:** enable statistics reporting
@@ -103,35 +102,55 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 - **stats realm:** statistics authentication realm
 - **stats auth:** enable statistics basic authentication and grant access to an account(user:pass)
 
-##### listen rabbitmq
-- **:**
-- **:**
-- **:**
-- **:**
+#### listen rabbitmq
+- **bind:** listening address:port
+- **mode:** which protocol is being used
+- **option tcplog:** advanced logging of TCP connections with session state and timers
+- **balance roundrobin:** load balancing algorithm used
+- **server rabbitmq-node-x rabbitmq-node-x:5672 check inter 5000 rise 3 fall 5:** declares a rabbitmq server with hostname "rabbitmq-node-x" that listen at port "5672", with a health check interval of 5000ms. This server can be considered operational after 3 consecutive successful health checks(rise), and it can only be considered dead after 5 consecutive unsuccessful health checks(fall).
 
-You can find more information about the configuration [here](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html).
+You can find more information about HAproxy configuration [here](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html).
 
-HAProxy Dockerfile
+### HAProxy Dockerfile
+Now we can create a Dockerfile for our HAProxy that will use our previously created configuration.
+
+Create a file named `Dockerfile` and place the following content on it:
 ```dockerfile
 FROM haproxy:1.7
 
-ENV HAPROXY_CONFIG /usr/local/etc/haproxy/haproxy.cfg
 ENV HAPROXY_USER haproxy
 
 RUN groupadd --system ${HAPROXY_USER} \
     && useradd --system --gid ${HAPROXY_USER} ${HAPROXY_USER}
 
-COPY haproxy.cfg ${HAPROXY_CONFIG}
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 
-CMD ['haproxy', '-f', ${HAPROXY_CONFIG}]
+CMD ['haproxy', '-f', /usr/local/etc/haproxy/haproxy.cfg]
 ```
+This Dockerfile will:
 
+&nbsp;&nbsp;1. get a HAProxy 1.7 docker image
 
-Build Docker image
+&nbsp;&nbsp;2. add a "haproxy" user/group in the system
+
+&nbsp;&nbsp;3. copy our configuration file over to the container
+
+&nbsp;&nbsp;4. run HAProxy with our configuration
+
+Now we need to build the image:
 ```sh
 $ docker build -t haproxy-rabbitmq-cluster:1.7 .
 ```
+You can check your newly created image by running `$ docker images`
+```sh
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+haproxy-rabbitmq-cluster   1.7                 fbe7dc7dddad        23 hours ago        137MB
+haproxy                    1.7                 4bb854517f75        3 weeks ago         136MB
+rabbitmq                   3-management        fb11f4e0a6b6        2 months ago        124MB
+```
 
+## Linking everything with Docker Compose
+Create a file named `docker-compose.yml` and place the following content on it:
 ```yaml
 version: '2'
 
@@ -195,15 +214,27 @@ networks:
  cluster-network:
   driver: bridge
 ```
+Our compose file has 4 services and 1 network:
+- **rabbitmq-node-1:** creates a container based on a RabbitMQ image, defines its hostname, exposed ports, networks, storage volumes and some specific RabbitMQ environment variables
+- **rabbitmq-node-2:** the same for node 2
+- **rabbitmq-node-3:** the same for node 3
+- **haproxy:** creates a container based on our HAproxy image, exposes port "5672" for TCP communication with RabbitMQ servers, and port "1936" for accessing HAProxy statistics portal
+- **cluster-network:** creates a private internal network named "cluster-network" that enables the containers to communicate with each other
 
-
-
-Run docker compose
+Now we can run docker compose:
 ```sh
 $ docker-compose up -d
 ```
+You can view your containers running, just execute `$ docker ps`:
+```
+CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                                                                     NAMES
+20438b543486        haproxy-rabbitmq-cluster:1.7   "/docker-entrypoin..."   24 hours ago        Up 24 hours         0.0.0.0:1936->1936/tcp, 0.0.0.0:5672->5672/tcp                            haproxy
+ae3c75f20878        rabbitmq:3-management          "docker-entrypoint..."   24 hours ago        Up 22 hours         4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp   rabbitmq-node-1
+193ab53159c4        rabbitmq:3-management          "docker-entrypoint..."   24 hours ago        Up 24 hours         4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15673->15672/tcp   rabbitmq-node-2
+227d2d32d86e        rabbitmq:3-management          "docker-entrypoint..."   24 hours ago        Up 23 hours         4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15674->15672/tcp   rabbitmq-node-3
+```
 
-
+## Creating a cluster
 Create cluster
 
 Node 2
