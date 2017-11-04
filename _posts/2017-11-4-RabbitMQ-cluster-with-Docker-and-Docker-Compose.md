@@ -94,6 +94,7 @@ I imagine that you hate(as much as I do) to just copy things over, so here's a b
 **timeout server:** maximum inactivity time on the server side
 
 ### listen haproxy-stats
+
 **bind:** listening address:port
 
 **mode:** which protocol is being used
