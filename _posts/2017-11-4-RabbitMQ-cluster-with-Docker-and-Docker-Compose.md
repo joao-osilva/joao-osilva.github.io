@@ -75,7 +75,7 @@ listen rabbitmq
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
-<table style="width:100%">
+<table style="width:100%; border-color:red;">
   <tr>
     <th>Firstname</th>
     <th>Lastname</th>
