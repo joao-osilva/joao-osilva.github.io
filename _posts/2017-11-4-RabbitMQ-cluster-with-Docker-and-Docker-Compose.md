@@ -75,9 +75,9 @@ listen rabbitmq
 ```
 I imagine that you hate(as much as I do) to just copy things over, so here's a brief explanation:
 
-| Variable    | Description           |
+|     |            |
 | ----------|-------------|
-| _bind_     | listening address:port |
+| **_bind_**     | listening address:port |
 
 | Type      | Host     | Points To | TTL      |
 |:---------:|:--------:|:---------:|:--------:|
