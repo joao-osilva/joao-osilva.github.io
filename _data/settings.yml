@@ -11,6 +11,7 @@ disqus:
 
 menu:
 - {name: 'Technology', file: 'technology.html'}
+- {name: 'Tags', file: 'tags.html'}
 - {name: 'About', file: 'about.html'}
 - {name: 'Contact', file: 'contact.html'}
 

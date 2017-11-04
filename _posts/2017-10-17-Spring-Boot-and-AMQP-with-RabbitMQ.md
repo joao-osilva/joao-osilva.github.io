@@ -3,7 +3,7 @@ layout: post
 title: "Spring Boot and AMQP with RabbitMQ"
 author: "João Silva"
 categories: technology
-tags: [technology]
+tags: [technology, rabbitmq, amqp, spring-boot, spring-amqp, docker, docker-compose]
 image:
   feature: mailboxes.jpg
 published: false

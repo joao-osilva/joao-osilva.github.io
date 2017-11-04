@@ -3,7 +3,7 @@ layout: post
 title: "Enterprise Messaging with RabbitMQ and AMQP"
 author: "João Silva"
 categories: technology
-tags: [technology]
+tags: [technology, message-oriented-middleware, rabbitmq, amqp]
 image:
   feature: rabbit.jpg
 ---
