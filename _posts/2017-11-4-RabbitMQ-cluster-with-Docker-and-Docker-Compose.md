@@ -244,7 +244,7 @@ Now we can run docker compose:
 $ docker-compose up -d
 ```
 You can view if the containers are running, just execute `$ docker ps` on a terminal:
-```
+```sh
 CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                                                                     NAMES
 83cb27c8eac0        rabbitmq:3-management          "docker-entrypoint..."   26 seconds ago      Up 22 seconds       4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp   rabbitmq-node-1
 8028897421ca        haproxy-rabbitmq-cluster:1.7   "/docker-entrypoin..."   26 seconds ago      Up 23 seconds       0.0.0.0:1936->1936/tcp, 0.0.0.0:5672->5672/tcp                            haproxy
@@ -259,7 +259,7 @@ I decided to join nodes `rabbitmq-node-2` and `rabbitmq-node-3` over to node `ra
 
 We can see the current status of node `rabbitmq-node-1` cluster by executing:
 ```sh
-$ docker exec  -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
+$ docker exec -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
 
 Cluster status of node 'rabbit@rabbitmq-node-1'
 [{nodes,[{disc,['rabbit@rabbitmq-node-1']}]},
@@ -284,7 +284,7 @@ $ docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl start_app"
 
 We can check the cluster status again and verify that the node `rabbitmq-node-2` successfully joined the cluster:
 ```sh
-$ docker exec  -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
+$ docker exec -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
 
 Cluster status of node 'rabbit@rabbitmq-node-1'
 [{nodes,[{disc,['rabbit@rabbitmq-node-1','rabbit@rabbitmq-node-2']}]},
@@ -303,7 +303,7 @@ $ docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl start_app"
 
 And now node `rabbitmq-node-3` is also a part of our cluster:
 ```sh
-$ docker exec  -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
+$ docker exec -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
 
 Cluster status of node 'rabbit@rabbitmq-node-1'
 [{nodes,[{disc,['rabbit@rabbitmq-node-1','rabbit@rabbitmq-node-2',
@@ -320,7 +320,7 @@ Cluster status of node 'rabbit@rabbitmq-node-1'
 You can find more information about clustering [here](https://www.rabbitmq.com/clustering.html)
 
 ## Monitoring our cluster
-We can access the HAProxy statistics report at `http://localhost:1936/haproxy?stats` using the credential(`haproxy:haproxy`) defined at the configuration file(`haproxy.cfg`).
+We can access the HAProxy statistics report at `http://localhost:1936/haproxy?stats` using the credential(`haproxy:haproxy`) defined at the `haproxy.cfg` file
 <div class="screenshot-img">
 <img src="/assets/img/haproxy-stats-1.png">
 </div>
@@ -330,13 +330,20 @@ You should be able to see our 3 servers statistics
 <img src="/assets/img/haproxy-stats-2.png">
 </div>
 
-We can also access RabbitMQ's management console at `http://localhost:15672/` using the credential(`admin:Admin@123`) defined at the `docker-compose.yml` file.
+We can also access RabbitMQ's management console at `http://localhost:15672/` using the credential(`admin:Admin@123`) defined at the `docker-compose.yml` file
 <div class="screenshot-img">
 <img src="/assets/img/rabbitmq-console-1.png">
 </div>
+
+And you will also see our 3 nodes up and running
 <div class="screenshot-img">
 <img src="/assets/img/rabbitmq-console-2.png">
 </div>
 <div class="screenshot-img">
 <img src="/assets/img/rabbitmq-console-3.png">
 </div>
+
+
+You can find the files for this post at my [GitHub](https://github.com/joao-osilva/rabbitmq-cluster-docker-compose).
+
+That's all folks!
