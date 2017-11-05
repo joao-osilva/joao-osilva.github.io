@@ -6,11 +6,11 @@ categories: technology
 tags: [technology, rabbitmq, docker, docker-compose, haproxy]
 image:
   feature: container.jpeg
-published: false
+published: true
 ---
 Following my previous post about [Enterprise Messaging with RabbitMQ and AMQP]({{ site.baseurl }}{% post_url 2017-10-15-Enterprise-Messaging-with-RabbitMQ-and-AMQP %}), let's get a cluster up running using Docker and Docker Compose.
 
-## Target Architecture
+## Our target architecture
 The idea here is to create a RabbitMQ cluster composed by 3 nodes, having a reverse proxy sitting in front of the cluster distributing the load between the nodes.
 
 <div class="all-img">
@@ -162,7 +162,7 @@ haproxy                    1.7                 4bb854517f75        3 weeks ago  
 rabbitmq                   3-management        fb11f4e0a6b6        2 months ago        124MB
 ```
 
-## Linking everything with Docker Compose
+## Wrap everything with Docker Compose
 Create a file named `docker-compose.yml` and place the following content on it:
 ```yaml
 version: '2'
@@ -227,7 +227,7 @@ networks:
  cluster-network:
   driver: bridge
 ```
-Our compose file has 4 services and 1 network:
+Our compose file has 4 services and 1 network definition:
 - **rabbitmq-node-1:** creates a container based on a RabbitMQ image, defines its hostname, exposed ports, networks, storage volumes and some specific RabbitMQ environment variables
 - **rabbitmq-node-2:** the same for node 2
 - **rabbitmq-node-3:** the same for node 3
@@ -238,27 +238,98 @@ Now we can run docker compose:
 ```sh
 $ docker-compose up -d
 ```
-You can view your containers running, just execute `$ docker ps`:
+You can view if the containers are running, just execute `$ docker ps` on a terminal:
 ```
 CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                                                                     NAMES
-20438b543486        haproxy-rabbitmq-cluster:1.7   "/docker-entrypoin..."   24 hours ago        Up 24 hours         0.0.0.0:1936->1936/tcp, 0.0.0.0:5672->5672/tcp                            haproxy
-ae3c75f20878        rabbitmq:3-management          "docker-entrypoint..."   24 hours ago        Up 22 hours         4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp   rabbitmq-node-1
-193ab53159c4        rabbitmq:3-management          "docker-entrypoint..."   24 hours ago        Up 24 hours         4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15673->15672/tcp   rabbitmq-node-2
-227d2d32d86e        rabbitmq:3-management          "docker-entrypoint..."   24 hours ago        Up 23 hours         4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15674->15672/tcp   rabbitmq-node-3
+83cb27c8eac0        rabbitmq:3-management          "docker-entrypoint..."   26 seconds ago      Up 22 seconds       4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp   rabbitmq-node-1
+8028897421ca        haproxy-rabbitmq-cluster:1.7   "/docker-entrypoin..."   26 seconds ago      Up 23 seconds       0.0.0.0:1936->1936/tcp, 0.0.0.0:5672->5672/tcp                            haproxy
+87aa6ba9aff4        rabbitmq:3-management          "docker-entrypoint..."   26 seconds ago      Up 24 seconds       4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15674->15672/tcp   rabbitmq-node-3
+12ea1c65107c        rabbitmq:3-management          "docker-entrypoint..."   26 seconds ago      Up 23 seconds       4369/tcp, 5671-5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15673->15672/tcp   rabbitmq-node-2
 ```
 
 ## Creating a cluster
-Create cluster
+Once everything is up and running we can start joining the nodes into a cluster.
 
-Node 2
+I decided to join nodes `rabbitmq-node-2` and `rabbitmq-node-3` over to node `rabbitmq-node-1` cluster.
+
+We can see the current status of node `rabbitmq-node-1` cluster by executing:
 ```sh
-docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl stop_app"
-docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl join_cluster rabbit@rabbitmq-node-1"
-docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl start_app"
+$ docker exec  -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
+
+Cluster status of node 'rabbit@rabbitmq-node-1'
+[{nodes,[{disc,['rabbit@rabbitmq-node-1']}]},
+ {running_nodes,['rabbit@rabbitmq-node-1']},
+ {cluster_name,<<"rabbit@rabbitmq-node-1">>},
+ {partitions,[]},
+ {alarms,[{'rabbit@rabbitmq-node-1',[]}]}]
 ```
-Node 3
+
+Let's start with node `rabbitmq-node-2` by stopping the app:
 ```sh
-docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl stop_app"
-docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl join_cluster rabbit@rabbitmq-node-1"
-docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl start_app"
+$ docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl stop_app"
 ```
+Now join the cluster `rabbit@rabbitmq-node-1`:
+```sh
+$ docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl join_cluster rabbit@rabbitmq-node-1"
+```
+And finally start the app:
+```sh
+$ docker exec -ti rabbitmq-node-2 bash -c "rabbitmqctl start_app"
+```
+
+We can check the cluster status again and verify that the node `rabbitmq-node-2` successfully joined the cluster:
+```sh
+$ docker exec  -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
+
+Cluster status of node 'rabbit@rabbitmq-node-1'
+[{nodes,[{disc,['rabbit@rabbitmq-node-1','rabbit@rabbitmq-node-2']}]},
+ {running_nodes,['rabbit@rabbitmq-node-2','rabbit@rabbitmq-node-1']},
+ {cluster_name,<<"rabbit@rabbitmq-node-1">>},
+ {partitions,[]},
+ {alarms,[{'rabbit@rabbitmq-node-2',[]},{'rabbit@rabbitmq-node-1',[]}]}]
+```
+
+Repeat the same steps for node `rabbitmq-node-3`:
+```sh
+$ docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl stop_app"
+$ docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl join_cluster rabbit@rabbitmq-node-1"
+$ docker exec -ti rabbitmq-node-3 bash -c "rabbitmqctl start_app"
+```
+
+And now node `rabbitmq-node-3` is also a part of our cluster:
+```sh
+$ docker exec  -ti rabbitmq-node-1 bash -c "rabbitmqctl cluster_status"
+
+Cluster status of node 'rabbit@rabbitmq-node-1'
+[{nodes,[{disc,['rabbit@rabbitmq-node-1','rabbit@rabbitmq-node-2',
+                'rabbit@rabbitmq-node-3']}]},
+ {running_nodes,['rabbit@rabbitmq-node-3','rabbit@rabbitmq-node-2',
+                 'rabbit@rabbitmq-node-1']},
+ {cluster_name,<<"rabbit@rabbitmq-node-1">>},
+ {partitions,[]},
+ {alarms,[{'rabbit@rabbitmq-node-3',[]},
+          {'rabbit@rabbitmq-node-2',[]},
+          {'rabbit@rabbitmq-node-1',[]}]}]
+```
+
+## Monitoring our cluster
+We can access the HAProxy statistics report at `http://localhost:1936/haproxy?stats` using the credential defined (`haproxy:haproxy`) at the configuration file(`haproxy.cfg`).
+<div class="all-img">
+<img src="/assets/img/haproxy-stats-1.png">
+</div>
+
+And you should be able to see our 3 servers statistics
+<div class="all-img">
+<img src="/assets/img/haproxy-stats-2.png">
+</div>
+
+We can also access RabbitMQ's management console at `http://localhost:15672/` using the credentials defined at the `docker-compose.yml` file.
+<div class="all-img">
+<img src="/assets/img/rabbitmq-console-1.png">
+</div>
+<div class="all-img">
+<img src="/assets/img/rabbitmq-console-2.png">
+</div>
+<div class="all-img">
+<img src="/assets/img/rabbitmq-console-3.png">
+</div>
