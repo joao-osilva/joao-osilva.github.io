@@ -312,6 +312,8 @@ Cluster status of node 'rabbit@rabbitmq-node-1'
           {'rabbit@rabbitmq-node-1',[]}]}]
 ```
 
+You can find more information about clustering [here](https://www.rabbitmq.com/clustering.html)
+
 ## Monitoring our cluster
 We can access the HAProxy statistics report at `http://localhost:1936/haproxy?stats` using the credential defined (`haproxy:haproxy`) at the configuration file(`haproxy.cfg`).
 <div class="all-img">
