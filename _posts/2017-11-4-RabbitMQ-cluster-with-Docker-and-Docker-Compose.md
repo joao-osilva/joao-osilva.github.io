@@ -228,11 +228,16 @@ networks:
   driver: bridge
 ```
 Our compose file has 4 services and 1 network definition:
-- **rabbitmq-node-1:** creates a container based on a RabbitMQ image, defines its hostname, exposed ports, networks, storage volumes and some specific RabbitMQ environment variables
-- **rabbitmq-node-2:** the same for node 2
-- **rabbitmq-node-3:** the same for node 3
-- **haproxy:** creates a container based on our HAproxy image, exposes port "5672" for TCP communication with RabbitMQ servers, and port "1936" for accessing HAProxy statistics portal
-- **cluster-network:** creates a private internal network named "cluster-network" that enables the containers to communicate with each other
+
+**rabbitmq-node-1:** creates a container based on a RabbitMQ image, defines its hostname, exposed ports, networks, storage volumes and some specific RabbitMQ environment variables
+
+**rabbitmq-node-2:** the same for node 2
+
+**rabbitmq-node-3:** the same for node 3
+
+**haproxy:** creates a container based on our HAproxy image, exposes port "5672" for TCP communication with RabbitMQ servers, and port "1936" for accessing HAProxy statistics portal
+
+**cluster-network:** creates a private internal network named "cluster-network" that enables the containers to communicate with each other
 
 Now we can run docker compose:
 ```sh
@@ -315,23 +320,23 @@ Cluster status of node 'rabbit@rabbitmq-node-1'
 You can find more information about clustering [here](https://www.rabbitmq.com/clustering.html)
 
 ## Monitoring our cluster
-We can access the HAProxy statistics report at `http://localhost:1936/haproxy?stats` using the credential defined (`haproxy:haproxy`) at the configuration file(`haproxy.cfg`).
-<div class="all-img">
+We can access the HAProxy statistics report at `http://localhost:1936/haproxy?stats` using the credential(`haproxy:haproxy`) defined at the configuration file(`haproxy.cfg`).
+<div class="screenshot-img">
 <img src="/assets/img/haproxy-stats-1.png">
 </div>
 
-And you should be able to see our 3 servers statistics
-<div class="all-img">
+You should be able to see our 3 servers statistics
+<div class="screenshot-img">
 <img src="/assets/img/haproxy-stats-2.png">
 </div>
 
-We can also access RabbitMQ's management console at `http://localhost:15672/` using the credentials defined at the `docker-compose.yml` file.
-<div class="all-img">
+We can also access RabbitMQ's management console at `http://localhost:15672/` using the credential(`admin:Admin@123`) defined at the `docker-compose.yml` file.
+<div class="screenshot-img">
 <img src="/assets/img/rabbitmq-console-1.png">
 </div>
-<div class="all-img">
+<div class="screenshot-img">
 <img src="/assets/img/rabbitmq-console-2.png">
 </div>
-<div class="all-img">
+<div class="screenshot-img">
 <img src="/assets/img/rabbitmq-console-3.png">
 </div>
