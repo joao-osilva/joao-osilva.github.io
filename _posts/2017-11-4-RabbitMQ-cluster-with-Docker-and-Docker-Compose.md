@@ -154,7 +154,7 @@ Now we need to build the image:
 ```sh
 $ docker build -t haproxy-rabbitmq-cluster:1.7 .
 ```
-You can check your newly created image by running `$ docker images`
+You can check your newly created image by running `$ docker images`:
 ```sh
 REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
 haproxy-rabbitmq-cluster   1.7                 fbe7dc7dddad        23 hours ago        137MB
@@ -343,7 +343,7 @@ And you will also see our 3 nodes up and running
 <img src="/assets/img/rabbitmq-console-3.png">
 </div>
 
-
+<br>
 You can find the files for this post at my [GitHub](https://github.com/joao-osilva/rabbitmq-cluster-docker-compose).
 
 That's all folks!
